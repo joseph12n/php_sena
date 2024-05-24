@@ -17,8 +17,9 @@
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $rol = new User;
-                $rol->setRolName("un_error");
+                $rol->setRolName($_POST['rol_name']);
                 $rol->create_rol();
+                header("Location: ?c=Users&a=rolRead");
             }
         }
 
@@ -33,24 +34,27 @@
 
         // Controlador Actualizar Rol
         public function rolUpdate(){
-            $rolCode = 3;
-            // Objeto_01. Crear el objeto a partir del registro db, según petición
-            $rolId = new User;
-            $rolId = $rolId->getrol_bycode($rolCode);
-            print_r($rolId);
-
-            // Objeto_02. Actualizar el usuario en la db, a partir del Objeto_01
-            $rolUpdate = new User;
-            $rolUpdate->setRolCode($rolCode);
-            $rolUpdate->setRolName("seller");
-            $rolUpdate->update_rol();
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $rolId = new User;
+                $rolId = $rolId->getrol_bycode($_GET['idRol']);
+                require_once "views/roles/admin/header.view.php";
+                require_once "views/modules/users/rol_update.view.php";
+                require_once "views/roles/admin/footer.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $rolUpdate = new User;
+                $rolUpdate->setRolCode($_POST['rol_code']);
+                $rolUpdate->setRolName($_POST['rol_name']);
+                $rolUpdate->update_rol();
+                header("Location: ?c=Users&a=rolRead");
+            }
         }
 
         // Controlador Eliminar Rol
         public function rolDelete(){
-            $rolCode = 3;
             $rol = new User;
-            $rol->delete_rol($rolCode);
+            $rol->delete_rol($_GET['idRol']);
+            header("Location: ?c=Users&a=rolRead");
         }
 
         // Controlador Crear Usuario
