@@ -55,14 +55,14 @@
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Roles <i class="fas fa-chevron-down"></i></a>
-							<ul>
+							<a href="#" class="nav-btn-submenu <?php echo $action == ('rolCreate'|| 'rolRead') ? 'active' : '' ?> "><i class="fas fa-users fa-fw"></i> &nbsp; Roles <i class="fas fa-chevron-down"></i></a>
+							<ul class="<?php echo $action == ('rolCreate'|| 'rolRead') ? 'show-nav-lateral-submenu':''?>">
 								<li>
 									<!-- Etiqueta a, propiedad href="Se llama Controlador y Método" -->
-									<a href="?c=Users&a=rolCreate"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Rol</a>
+									<a class="<?php echo $action == 'rolCreate' ? 'background-btn-active' : ''?>" href="?c=Users&a=rolCreate"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Rol</a>
 								</li>
 								<li>
-									<a href="?c=Users&a=rolRead"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Consultar Roles</a>
+									<a class="<?php echo $action == 'rolRead' ? 'background-btn-active' : ''?>" href="?c=Users&a=rolRead"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Consultar Roles</a>
 								</li>
 								<li>
 									<a href="client-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Rol</a>
@@ -71,16 +71,16 @@
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-pallet fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-pallet fa-fw"></i> &nbsp; Items <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
-									<a href="?c=Users&a=userCreate"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Usuario</a>
+									<a href="item-new.html"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar item</a>
 								</li>
 								<li>
-									<a href="?c=Users&a=userRead"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Consultar Usuarios</a>
+									<a href="item-list.html"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista de items</a>
 								</li>
 								<li>
-									<a href="#"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Usuario</a>
+									<a href="item-search.html"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar item</a>
 								</li>
 							</ul>
 						</li>
@@ -132,10 +132,10 @@
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
-				<a href="#">
+				<a href="user-update.html">
 					<i class="fas fa-user-cog"></i>
 				</a>
-				<a href="?c=Logout" class="">
+				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
 				</a>
 			</nav>

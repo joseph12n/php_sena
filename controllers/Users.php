@@ -1,19 +1,18 @@
 <?php
     require_once "models/User.php";
     class Users{
+
+        public function __construct(){}
+
         // Controlador Principal
         public function main(){
-            require_once "views/roles/admin/header.view.php";
-            require_once "views/roles/admin/admin.view.php";
-            require_once "views/roles/admin/footer.view.php";
+            header("Location: ?c=Dashboard");
         }
 
         // Controlador Crear Rol
         public function rolCreate(){
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-                require_once "views/roles/admin/header.view.php";
                 require_once "views/modules/users/rol_create.view.php";
-                require_once "views/roles/admin/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $rol = new User;
@@ -27,9 +26,7 @@
         public function rolRead(){
             $roles = new User;
             $roles = $roles->read_roles();
-            require_once "views/roles/admin/header.view.php";
             require_once "views/modules/users/rol_read.view.php";
-            require_once "views/roles/admin/footer.view.php";
         }
 
         // Controlador Actualizar Rol
@@ -37,9 +34,7 @@
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $rolId = new User;
                 $rolId = $rolId->getrol_bycode($_GET['idRol']);
-                require_once "views/roles/admin/header.view.php";
                 require_once "views/modules/users/rol_update.view.php";
-                require_once "views/roles/admin/footer.view.php";
             }
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $rolUpdate = new User;
@@ -59,54 +54,68 @@
 
         // Controlador Crear Usuario
         public function userCreate(){
-            $user = new User(
-                3,
-                null,
-                "Vicente",
-                "Fernández",
-                "456789321",
-                "vicente_fernandez@misena.edu.co",
-                "54321",
-                1
-            );
-            $user->create_user();
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $roles = new User;
+                $roles = $roles->read_roles();
+                require_once "views/modules/users/user_create.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $user = new User(
+                    $_POST['rol_code'],
+                    null,
+                    $_POST['user_name'],
+                    $_POST['user_lastname'],
+                    $_POST['user_id'],
+                    $_POST['user_email'],
+                    $_POST['user_pass'],
+                    $_POST['user_state']
+                );
+                $user->create_user();
+                header("Location: ?c=Users&a=userRead");
+            }
         }
 
         // Controlador Consultar Usuarios
         public function userRead(){
+            $state = ['Inactivo', 'Activo'];
             $users = new User;
             $users = $users->read_users();
-            print_r($users);
+            require_once "views/modules/users/user_read.view.php";
         }
 
         // Controlador Actualizar Usuario
         public function userUpdate(){
-            $userCode = 3;
-            // Objeto_01. Crear el objeto a partir del registro db, según petición
-            $user = new User;
-            $user = $user->getuser_bycode($userCode);
-            print_r($user);
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $state = ['Inactivo', 'Activo'];
+                $roles = new User;
+                $roles = $roles->read_roles();
+                $user = new User;
+                $user = $user->getuser_bycode($_GET['idUser']);
+                require_once "views/modules/users/user_update.view.php";
+            }
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $userUpdate = new User(
+                    $_POST['rol_code'],
+                    $_POST['user_code'],
+                    $_POST['user_name'],
+                    $_POST['user_lastname'],
+                    $_POST['user_id'],
+                    $_POST['user_email'],
+                    $_POST['user_pass'],
+                    $_POST['user_state']
+                );
+                $userUpdate->update_user();
+                header("Location: ?c=Users&a=userRead");
+            }
 
-            #Objeto_02. Actualizar el usuario en la db, a partir del Objeto_01
-            $userUpdate = new User(
-                3,
-                $userCode,
-                "Emily",
-                "Rodriguez",
-                "122344534",
-                "em_rodriguez@misena.edu.co",
-                "56432",
-                0
-            );
 
-            $userUpdate->update_user();
         }
 
         // Controlador Eliminar Usuario
         public function userDelete(){
-            $userCode = 2;
             $user = new User;
-            $user->delete_user($userCode);
+            $user->delete_user($_GET['idUser']);
+            header("Location: ?c=Users&a=userRead");
         }
     }
 ?>

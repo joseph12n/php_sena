@@ -34,7 +34,7 @@
 	--form-color: #14111A;
 
 	--accent-color: #253556;
-	/*--accent-color: #455A64;*/
+	--accent-color: #455A64;
     --border-color: #D8D8D8;
 }
 
@@ -45,6 +45,10 @@ body,html{
 	background-color: var(--color-one);
 	color: #333;
 	font-size: 16px;
+}
+
+.background-btn-active{
+	background: rgba(209, 196, 203, 0.2);	
 }
 
 .full-box{
