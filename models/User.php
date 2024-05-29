@@ -49,6 +49,7 @@
 
         # Constructor: Objeto 09 parámetros
         public function __construct9($rol_code,$rol_name,$user_code,$user_name,$user_lastname,$user_id,$user_email,$user_pass,$user_state){
+            unset($this->dbh);
             $this->rol_code = $rol_code;
             $this->rol_name = $rol_name;
             $this->user_code = $user_code;

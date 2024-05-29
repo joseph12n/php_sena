@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Home</title>
+	<title>SisWebPhp</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="assets/dashboard/css/normalize.css">
@@ -44,7 +44,7 @@
 					<i class="far fa-times-circle show-nav-lateral"></i>
 					<img src="assets/dashboard/assets/avatar/Avatar.png" class="img-fluid" alt="Avatar">
 					<figcaption class="roboto-medium text-center">
-						Carlos Alfaro <br><small class="roboto-condensed-light">Web Developer</small>
+						<?php echo $profile->getUserName() . " " . $profile->getUserLastName() ?> <br><small class="roboto-condensed-light">Web Developer</small>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>

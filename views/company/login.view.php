@@ -6,7 +6,7 @@
                     <h1 class="h1">Inicio de Sesión</h1>
                 </div>
             </div>
-            <form class="col-md-9 m-auto" method="post" role="form">
+            <form class="col-md-9 m-auto" action="" method="post" role="form">
                 <div class="mb-3">
                     <label for="user_email">Usuario</label>
                     <input type="text" class="form-control mt-1" id="user_email" name="user_email" placeholder="Correo electrónico">
@@ -19,6 +19,9 @@
                     <div class="col text-center mt-2">
                         <button type="submit" class="btn btn-success btn-lg px-3">Enviar</button>
                     </div>
+                </div>
+                <div class="mb-3 mt-3">
+                    <h3 class="h5"><?php echo $message ?></h3>
                 </div>
             </form>
         </div>
