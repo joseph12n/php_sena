@@ -1,6 +1,7 @@
 <?php
     ob_start();
     session_start();
+    // session_destroy();
     require_once "models/DataBase.php";
     $controller = isset($_REQUEST['c']) ? $_REQUEST['c'] : "Landing";
     $route_controller = "controllers/" . $controller . ".php";
@@ -16,9 +17,10 @@
         } elseif (!empty($_SESSION['session'])) {
             require_once "models/User.php";
             $profile = unserialize($_SESSION['profile']);
-            require_once "views/roles/admin/header.view.php";
+            $session = $_SESSION['session'];
+            require_once "views/roles/".$session."/header.view.php";
             call_user_func(array($controller, $action));
-            require_once "views/roles/admin/footer.view.php";
+            require_once "views/roles/".$session."/footer.view.php";
         } else {
             header("Location:?");
         }
