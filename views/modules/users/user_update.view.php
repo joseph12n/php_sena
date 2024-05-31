@@ -3,11 +3,9 @@
 				<h3 class="text-left">
 					<i class="fas fa-plus fa-fw"></i> &nbsp; ACTUALIZAR USUARIO
 				</h3>
-				<p class="text-justify">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit nostrum rerum animi natus beatae ex. Culpa blanditiis tempore amet alias placeat, obcaecati quaerat ullam, sunt est, odio aut veniam ratione.
-				</p>
+
 			</div>
-			
+
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
@@ -19,9 +17,9 @@
 					<li>
 						<a href="#"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR USUARIO</a>
 					</li>
-				</ul>	
+				</ul>
 			</div>
-			
+
 			<!-- Content -->
 			<div class="container-fluid">
 				<form action="" method="POST" class="form-neon" autocomplete="off">
@@ -33,7 +31,7 @@
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="rol_code" class="bmd-label-floating">Rol</label>
-										<select class="form-control" name="rol_code">                                            											
+										<select class="form-control" name="rol_code">
 											<?php foreach ($roles as $rol) : ?>
                                                 <?php if ($rol->getRolCode() == $user->getRolCode()) : ?>
                                                     <option selected="" value="<?php echo $rol->getRolCode() ?>"><?php echo $rol->getRolName() ?></option>
@@ -69,13 +67,13 @@
 										<label for="user_lastname" class="bmd-label-floating">Apellidos</label>
 										<input type="text" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{1,35}" class="form-control" name="user_lastname" id="user_lastname" maxlength="35" value="<?php echo $user->getUserLastName();?>">
 									</div>
-								</div>								
+								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="user_id" class="bmd-label-floating">Identificación</label>
 										<input type="text" pattern="[0-9()+]{1,20}" class="form-control" name="user_id" id="user_id" maxlength="20" value="<?php echo $user->getUserId();?>">
 									</div>
-								</div>								
+								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="user_email" class="bmd-label-floating">Email</label>
@@ -96,7 +94,7 @@
 								</div>
 							</div>
 						</div>
-					</fieldset>					
+					</fieldset>
 					<p class="text-center" style="margin-top: 40px;">
 						<button type="reset" class="btn btn-raised btn-secondary btn-sm"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
 						&nbsp; &nbsp;

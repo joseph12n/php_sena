@@ -59,11 +59,11 @@
 				<nav class="full-box nav-lateral-menu">
 					<ul>
 						<li>
-							<a href="?c=Dashboard" class=""><i class="fab fa-dashcube fa-fw"></i> &nbsp; Administrador</a>
+							<a href="?c=Dashboard" class=""><i class="fab fa-dashcube fa-fw"></i> &nbsp; <?php echo ucfirst($session) ?></a>
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu "><i class="fas fa-user-graduate fa-fw"></i> &nbsp; Roles <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-graduate fa-fw"></i> &nbsp; Roles <i class="fas fa-chevron-down"></i></a>
 							<ul class="">
 								<li>
 									<a href="?c=Users&a=rolCreate"><i class="fas fa-plus fa-fw"></i> &nbsp; Registrar Rol</a>
@@ -78,7 +78,7 @@
 						</li>
 
 						<li>
-							<a href="#" class=""><i class="fas fa-users fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-users fa-fw"></i> &nbsp; Usuarios <i class="fas fa-chevron-down"></i></a>
 							<ul class="">
 								<li>
 									<a href="?c=Users&a=userCreate"><i class="fas fa-plus fa-fw"></i> &nbsp; Registrar Usuario</a>
